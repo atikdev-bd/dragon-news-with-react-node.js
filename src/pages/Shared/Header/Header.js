@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { FaSignOutAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 const Header = () => {
+
+  const {user} = useContext(AuthContext)
     return (
         <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
         <Container>
@@ -16,23 +21,24 @@ const Header = () => {
             <Nav className="me-auto">
               <Nav.Link href="#all-news">All News</Nav.Link>
               <Nav.Link href="#category">Category</Nav.Link>
-              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">More deets</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
-                Dank memes
-              </Nav.Link>
+              {
+                  !user && !user?.uid ? <><Link className='text-decoration-none fw-bold me-5 text-success fs-6' to='login'>Login</Link>
+                  <Link className='text-decoration-none fw-bold me-5 text-secondary fs-6' to='/register'>Register</Link></>
+                  : <><Link eventKey={2} to= '/'>
+                  <FaSignOutAlt  className="text-secondary"></FaSignOutAlt>
+                </Link>
+
+                <Image className='ms-2'
+              roundedCircle
+              src={user?.photoURL}
+              style={{ height: "30px" }}
+            ></Image>
+                
+                </>
+              }
+              
               <div className='d-lg-none'>
                 <LeftSideNav></LeftSideNav>
               </div>

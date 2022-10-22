@@ -28,7 +28,6 @@ const RightSideNav = () => {
 
   const handleGoogle = ()=>{
     googleLogin().then(result =>{
-      setUser(result.user)
        navigate(from, {replace : true})
     
     }).catch(error =>console.error(error))
