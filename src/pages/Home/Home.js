@@ -4,7 +4,7 @@ import NewsSummaryCart from "../Shared/NewsSummaryCart/NewsSummaryCart";
 
 const Home = () => {
   const allNews = useLoaderData();
-  console.log(allNews);
+ 
   return (
     <div>
       <h1>this is home components {allNews.length}</h1>

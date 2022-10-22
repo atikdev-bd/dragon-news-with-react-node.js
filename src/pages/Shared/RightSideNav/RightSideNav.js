@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Carousel from "react-bootstrap/Carousel";
@@ -13,13 +13,34 @@ import {
   FaTwitter,
   FaWhatsapp,
 } from "react-icons/fa";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+
 
 const RightSideNav = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+
+  const from = location.state?.from?.pathname || '/'
+
+  const {googleLogin,setUser} = useContext(AuthContext)
+
+  const handleGoogle = ()=>{
+    googleLogin().then(result =>{
+      setUser(result.user)
+       navigate(from, {replace : true})
+    
+    }).catch(error =>console.error(error))
+  }
+
+
+
   return (
     <div>
       <div>
         <ButtonGroup vertical>
-          <Button className="mt-2" variant="outline-primary">
+          <Button onClick={handleGoogle} on className="mt-2" variant="outline-primary">
             {" "}
             <FaGoogle /> Login with Google
           </Button>

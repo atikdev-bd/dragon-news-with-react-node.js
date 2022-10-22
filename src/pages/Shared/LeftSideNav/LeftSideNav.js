@@ -8,7 +8,7 @@ const LeftSideNav = () => {
     fetch("http://localhost:5000/news-category")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+       
         setCategores(data);
       });
   }, []);
