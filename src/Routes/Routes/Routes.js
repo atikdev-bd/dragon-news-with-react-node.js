@@ -4,6 +4,7 @@ import Category from "../../pages/Categores/Category";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
 import News from "../../pages/News/News";
+import Register from "../../pages/Register/Register";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path : "/login" ,
         element : <Login></Login>
+      },
+      {
+        path : "/register" ,
+        element : <Register></Register>
       }
 
     ],

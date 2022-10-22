@@ -14,7 +14,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 
 const RightSideNav = () => {
@@ -52,9 +52,12 @@ const RightSideNav = () => {
       <div className="mt-4">
         <h3>Find os on</h3>
         <ListGroup>
+          <a className="text-decoration-none" href="https://www.facebook.com/profile.php?id=100080090470755">
           <ListGroup.Item className="mb-2 shadow bg-secondary text-white">
             <FaFacebook /> Facebook
           </ListGroup.Item>
+          </a>
+          
           <ListGroup.Item className="mb-2 shadow bg-white text-dark">
             <FaTwitter /> Twitter
           </ListGroup.Item>
